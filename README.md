@@ -1,6 +1,6 @@
 # Logotip-Detector je Python program, ki prepozna logotip na sliki.
 
-Uporablja OpenCV knjižnico in Numpy ki je zelo optimizirana knjižnica za numerične operacije s sintakso .
+Uporablja OpenCV knjižnico in Numpy ki je zelo optimizirana knjižnica za numerične operacije s sintakso.
 
 Program Logotip-Detector:
 
