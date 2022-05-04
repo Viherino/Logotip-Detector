@@ -4,24 +4,25 @@ Uporablja OpenCV knjižnico in Numpy ki je zelo optimizirana knjižnica za numer
 
 Program Logotip-Detector:
 
-from sklearn.neighbors import KNeighborsClassifier
-from skimage import exposure, feature
-import numpy as np
-import cv2 as cv
-import glob
-import os
 
-# Get Paths
-ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
-head, _ = os.path.split(ROOT_DIR)
-trainingPath = head + "/" + "logos"
-testPath = head + "/" + "mixLogo"
+    from sklearn.neighbors import KNeighborsClassifier
+    from skimage import exposure, feature
+    import numpy as np
+    import cv2 as cv
+    import glob
+    import os
 
-# Init Lists
-hists = [] # histogram of Image
-labels = [] # Label of Image
+    # Get Paths
+    ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
+    head, _ = os.path.split(ROOT_DIR)
+    trainingPath = head + "/" + "logos"
+    testPath = head + "/" + "mixLogo"
 
-for imagePath in glob.glob(trainingPath + "/*/*.*"):
+    # Init Lists
+    hists = [] # histogram of Image
+    labels = [] # Label of Image
+
+    for imagePath in glob.glob(trainingPath + "/*/*.*"):
     # get label from folder name
     label = imagePath.split("\\")[-2]
     
@@ -59,12 +60,12 @@ for imagePath in glob.glob(trainingPath + "/*/*.*"):
         print(imagePath)
         print("Training Image couldn't be read")
 
-# Create model as Nearest Neighbors Classifier
-model = KNeighborsClassifier(n_neighbors=1)
-model.fit(hists, labels)
+    # Create model as Nearest Neighbors Classifier
+    model = KNeighborsClassifier(n_neighbors=1)
+    model.fit(hists, labels)
 
-# Check Test Images for Model
-for (imagePath) in glob.glob(testPath + "/*.*"):
+    # Check Test Images for Model
+    for (imagePath) in glob.glob(testPath + "/*.*"):
     # Read Images
     image = cv.imread(imagePath)
     try:
